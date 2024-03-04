@@ -14,8 +14,7 @@ _LOGGER = logging.getLogger(__name__)
 
 _engine = create_engine(
     url = get_settings().database_settings.database_uri,
-    connect_args = _CONNECT_ARGS_SQLITE,
-    
+    connect_args = _CONNECT_ARGS_SQLITE
 )
 
 
