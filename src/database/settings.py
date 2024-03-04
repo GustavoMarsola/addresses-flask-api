@@ -29,29 +29,12 @@ _session = sessionmaker(
 
 
 @contextmanager
-def get_session():
-    """
-    Get repositories session from factory and factory will do rollback if an exception are raised and always will
-    remove session from registry.
-    """
-    _sync_scoped_session: scoped_session = scoped_session(session_factory=_session)
-    try:
-        yield _sync_scoped_session()
-        _sync_scoped_session.commit()
-    except Exception as ex:
-        _sync_scoped_session.rollback()
-        raise
-    finally:
-        _sync_scoped_session.remove()
-
-
-@contextmanager
 def get_connection():
-    """
-    Get connection from engine and engine will do rollback if an exception are raised.
-    """
-    with _engine.connect() as connection:
-        with connection.begin():
-            yield connection
+    try:
+        yield _session()
+    except Exception as ex:
+        _session().rollback()
+    finally:
+        _session().close()
 
 
