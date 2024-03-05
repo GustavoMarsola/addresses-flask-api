@@ -1,4 +1,5 @@
 import logging
+
 from contextlib             import contextmanager
 from sqlalchemy.engine      import create_engine
 from sqlalchemy.orm         import sessionmaker, Session
@@ -7,16 +8,16 @@ from sqlalchemy.orm.scoping import scoped_session
 from src.settings import get_settings
 
 
-_CONNECT_ARGS_SQLITE = {'check_same_thread': False}
-
+# _CONNECT_ARGS_SQLITE = {'check_same_thread': False}
 _LOGGER = logging.getLogger(__name__)
 
 
 _engine = create_engine(
     url = get_settings().database_settings.database_uri,
-    connect_args = _CONNECT_ARGS_SQLITE
+    # connect_args = _CONNECT_ARGS_SQLITE
 )
 
+print(get_settings().database_settings.database_uri)
 
 _session = sessionmaker(
     bind=_engine,
@@ -33,8 +34,8 @@ def get_connection():
     try:
         yield _session()
     except Exception as ex:
+        print(f'Erro no banco de dados: {ex}')
         _session().rollback()
     finally:
         _session().close()
-
 

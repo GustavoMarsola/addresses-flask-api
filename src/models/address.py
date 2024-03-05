@@ -12,7 +12,7 @@ class Address(BaseModel):
     created_at: Mapped[datetime] = mapped_column(nullable=False, server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(nullable=False, server_default=func.now())
     
-    zip_code:     Mapped[str]      = mapped_column(nullable=False, unique=True)
+    zipcode:     Mapped[str]      = mapped_column(nullable=False, unique=True)
     city:         Mapped[str]      = mapped_column(nullable=False)
     state:        Mapped[str]      = mapped_column(nullable=False) 
     street:       Mapped[str]      = mapped_column(nullable=True)
