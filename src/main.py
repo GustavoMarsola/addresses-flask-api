@@ -5,7 +5,7 @@ from werkzeug.exceptions import HTTPException
 from werkzeug.exceptions import default_exceptions
 
 from src.controllers.routes.v1 import router as v1_router
-from src.controllers.health_check import router as health_check
+from src.controllers.routes.health_check import router as health_check
 
 
 app = Flask(__name__)

@@ -6,8 +6,8 @@ from pydantic_settings import BaseSettings
 
 
 class AppSettings(BaseSettings):
-    environment: str = Field("api-brazilian-addresses", validation_alias='ENVIRONMENT')
-    app:         str = Field("development", validation_alias='APP')
+    environment: str = Field("dev", validation_alias='ENVIRONMENT')
+    app:         str = Field("api-brazilian-addresses", validation_alias='APP')
     host:        str = Field('localhost', validation_alias='APP_HOST')
     port:        str = Field('5000', validation_alias='APP_PORT')
 
