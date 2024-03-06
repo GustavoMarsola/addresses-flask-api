@@ -17,3 +17,15 @@ class Address(BaseModel):
     state:        Mapped[str]      = mapped_column(nullable=False) 
     street:       Mapped[str]      = mapped_column(nullable=True)
     neighborhood: Mapped[str]      = mapped_column(nullable=True)
+    
+    
+    def as_dict(self):
+        return {'id': self.id,
+                'created_at': self.created_at,
+                'updated_at': self.updated_at,
+                'zipcode': self.zipcode,
+                'city': self.city,
+                'state': self.state,
+                'street': self.street,
+                'neighborhood': self.neighborhood
+                }
