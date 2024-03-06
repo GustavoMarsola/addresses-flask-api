@@ -1,9 +1,8 @@
 import logging
-from asyncio import current_task
+
 from contextlib             import contextmanager
 from sqlalchemy.engine      import create_engine
 from sqlalchemy.orm         import sessionmaker, Session
-from sqlalchemy.orm.scoping import scoped_session
 
 from src.settings import get_settings
 
