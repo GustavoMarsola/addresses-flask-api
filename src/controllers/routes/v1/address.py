@@ -6,7 +6,7 @@ from src.repositories.address_repository import RepositoryAddress
 from src.services import ServiceAdresses
 
 
-router = Blueprint('routes', __name__, url_prefix='/api/v1')
+router = Blueprint('address', __name__)
 
 
 @router.get('/addresses')
