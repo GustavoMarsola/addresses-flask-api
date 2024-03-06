@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, make_response
 
 router = Blueprint('health_check', __name__, url_prefix='/api')
 
-@router.route("/health_check", methods=['GET'])
+@router.get("/health_check", methods=['GET'])
 def alive() -> make_response:
     return make_response(
         jsonify({

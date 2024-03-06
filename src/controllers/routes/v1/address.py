@@ -1,8 +1,5 @@
 from flask import Blueprint, Request
 
-from src.repositories.api_repository import RepositoryAPI
-from src.repositories.address_repository import RepositoryAddress
-
 from src.services import ServiceAdresses
 
 
