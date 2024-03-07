@@ -15,8 +15,8 @@ def create_app():
 
 def run_app():
     _app = create_app()
-    _run_app = _app.run(host  = get_settings().app_settings.host, 
-                        port  = get_settings().app_settings.port,
-                        debug = get_settings().app_settings.debug)
+    _run_app = _app.run(host  = get_settings().server_settings.host, 
+                        port  = get_settings().server_settings.port,
+                        debug = get_settings().server_settings.debug)
     
     return _run_app
