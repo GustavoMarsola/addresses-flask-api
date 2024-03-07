@@ -4,11 +4,6 @@ from src.settings import get_settings
 from src.controllers.routes.v1 import v1
 from src.controllers.routes.health_check import router as health_check
 
-if get_settings().server_settings.environment in ['test', 'local', 'dev']:
-	from src.logs.settings import printing_log, log_config, custom_print
-	log_config()
-	custom_print()
-	printing_log()
 
 def create_app():
 	app = Flask(__name__)

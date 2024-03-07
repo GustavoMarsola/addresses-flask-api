@@ -10,8 +10,8 @@ from sqlalchemy.engine.url import URL
 class ServerSettings(BaseSettings):
 	environment: str  = Field('dev', validation_alias='ENVIRONMENT')
 	app:         str  = Field('api-brazilian-addresses', validation_alias='APP')
-	host:        str  = Field('localhost', validation_alias='APP_HOST')
-	port:        str  = Field('5000', validation_alias='APP_PORT')
+	host:        str  = Field('localhost', validation_alias='HOST')
+	port:        str  = Field('5000', validation_alias='PORT')
 	debug:       bool = Field(True, validation_alias='DEBUG')
 
 	@property
@@ -38,12 +38,12 @@ class DatabaseSettings(BaseSettings):
 	database_port:                  int = Field(5432, validation_alias='DATABASE_PORT')
 	database_page_size:             int = Field(1, validation_alias='PAGE_SIZE')
 	
-	database_username: str = Field('postgres', env='DATABASE_USERNAME')
-	database_password: str = Field('postgres', env='DATABASE_PASSWORD')
-	database_host:     str = Field('localhost', env='DATABASE_HOST')
-	database_port:     int = Field(5432, env='DATABASE_PORT')
-	database_name:     str = Field('postgres', env='DATABASE_NAME')
-	database_driver:   str = Field('postgresql+psycopg2', env='DATABASE_DRIVER')
+	database_username: str = Field('postgres', validation_alias='DATABASE_USERNAME')
+	database_password: str = Field('postgres', validation_alias='DATABASE_PASSWORD')
+	database_host:     str = Field('localhost', validation_alias='DATABASE_HOST')
+	database_port:     int = Field(5432, validation_alias='DATABASE_PORT')
+	database_name:     str = Field('postgres', validation_alias='DATABASE_NAME')
+	database_driver:   str = Field('postgresql+psycopg2', validation_alias='DATABASE_DRIVER')
 
 	database_project_root: Path = Path(__file__).resolve().parent.parent
 	database_project_path: str  = r"src\database\api-brazilian-addresses.db"
