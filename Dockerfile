@@ -2,10 +2,10 @@
 FROM python:3.11
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR $SERVICE_HOME
 
 # Copy the requirements file into the container
-COPY requirements.txt .
+COPY requirements.txt $SERVICE_HOME
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
@@ -17,4 +17,5 @@ COPY . .
 EXPOSE 5000
 
 # Command to run the application
-CMD ["python", "main.py"]
+ENTRYPOINT ["python", "main.py"]
+
