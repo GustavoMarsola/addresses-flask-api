@@ -25,12 +25,14 @@ class ServiceAdresses:
     
     @error_handler
     def service_post_address(self):
-        # Must have
+        # Receiving data
         data = request.get_json(force=True)
-        
+        # Must have
         _zipcode = data.get('zipcode')
         _city = data.get('city')
         _state = data.get('state')
+        if None in [_zipcode, _city, _state]:
+            return make_response(jsonify({'message': 'Address must contain zipcode, city and state'}), 500)
         # Nullable is possible
         _street = data.get('street')
         _neighborhood = data.get('neighborhood')
