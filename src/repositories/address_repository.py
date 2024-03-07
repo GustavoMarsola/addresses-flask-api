@@ -32,11 +32,15 @@ class RepositoryAddress:
                 return {}
     
     
-    def insert_address(self, insert_model: Address) -> None:
+    def insert_address(self, insert_model: Address) -> bool:
         with get_connection() as conn:
-        
-            conn.add(insert_model)
-            conn.commit()
+            try:
+                conn.add(insert_model)
+                conn.commit()
+                return True
+            except Exception as ex:
+                print(f'Fail to insert data: {ex}')
+                return False
     
     
     def update_address(self, zip_code:str, update_model: Address) -> dict:
