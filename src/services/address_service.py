@@ -24,4 +24,4 @@ class ServiceAdresses:
         t1  = set_local_time()
         
         print(f'Executed in {(t1-t0).total_seconds()} seconds')
-        return make_response(jsonify({'data': all_addresses}), 200)
+        return make_response(jsonify({'message': 'Data collected successfully','amount_addresses': len(all_addresses),'data': all_addresses}), 200)

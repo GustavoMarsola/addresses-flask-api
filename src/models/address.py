@@ -6,7 +6,7 @@ from src.models.base import BaseModel
 
 
 class Address(BaseModel):
-    __tablename__ = "address"
+    __tablename__ = "addresses"
     
     id:         Mapped[int]      = mapped_column(nullable=False, primary_key=True, autoincrement=True)    
     created_at: Mapped[datetime] = mapped_column(nullable=False, server_default=func.now())
@@ -21,8 +21,6 @@ class Address(BaseModel):
     
     def as_dict(self):
         return {'id': self.id,
-                'created_at': self.created_at,
-                'updated_at': self.updated_at,
                 'zipcode': self.zipcode,
                 'city': self.city,
                 'state': self.state,

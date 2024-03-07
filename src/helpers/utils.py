@@ -1,12 +1,12 @@
-import pytz
-
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from math import isnan
 from decimal import Decimal
 
 
 def set_local_time() -> datetime:
-    return datetime.now(pytz.timezone('America/Sao_Paulo')).replace(tzinfo=None)
+    _offset = timedelta(hours=-3)
+    _tz = timezone(offset=_offset)
+    return datetime.now(tz=_tz).replace(tzinfo=None)
 
 
 def read_sql_file(path):             

@@ -7,7 +7,6 @@ from pydantic_settings import BaseSettings
 from sqlalchemy.engine.url import URL
 
 
-
 class ServerSettings(BaseSettings):
 	environment: str  = Field('dev', validation_alias='ENVIRONMENT')
 	app:         str  = Field('api-brazilian-addresses', validation_alias='APP')
